@@ -11,9 +11,9 @@
             padding: 0;
             font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
             background-color: #f0f0f0;
-            color: #111; /* 真っ黒に近い色にしてコントラスト強化 */
+            color: #111;
             line-height: 1.8;
-            font-weight: bold; /* 【変更点】全体を太字に設定 */
+            font-weight: bold; /* 全体を太字に */
         }
 
         /* 背景画像の設定 */
@@ -37,8 +37,11 @@
             max-width: 900px;
             margin: 50px auto;
             
-            /* 背景の透明度（0.35） */
-            background-color: rgba(255, 255, 255, 0.35); 
+            /* ▼ここを変更しました
+               0.35 → 0.5 に変更。
+               これで「透過しすぎ」が解消され、ちょうどよい白さになります。
+            */
+            background-color: rgba(255, 255, 255, 0.5); 
             
             padding: 40px;
             border-radius: 15px;
@@ -48,29 +51,31 @@
             /* すりガラス効果 */
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            border: 2px solid rgba(255, 255, 255, 0.5); /* 枠線も少し太く */
+            border: 2px solid rgba(255, 255, 255, 0.6);
         }
 
         h1 {
-            font-size: 30px; /* タイトルを少し大きく */
-            font-weight: 800; /* さらに極太に */
-            color: #b71c1c; /* 濃い赤 */
+            font-size: 30px;
+            font-weight: 800;
+            color: #b71c1c;
             margin-bottom: 30px;
-            border-bottom: 3px solid #b71c1c; /* 下線も太く */
+            border-bottom: 3px solid #b71c1c;
             padding-bottom: 10px;
             display: inline-block;
-            
-            /* タイトルの光彩 */
             text-shadow: 2px 2px 0 #fff, -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff;
         }
 
         p {
-            font-size: 17px; /* 本文も少し大きく */
+            font-size: 17px;
             margin-bottom: 20px;
-            text-align: left;
-            /* 白い縁取りを少し太くして可読性アップ */
+            
+            /* ▼ここを変更しました
+               文章をすべて「中央揃え（center）」にしました。
+            */
+            text-align: center;
+            
             text-shadow: 1.5px 1.5px 0 #fff, -1.5px -1.5px 0 #fff, 1.5px -1.5px 0 #fff, -1.5px 1.5px 0 #fff;
-            font-weight: bold; /* 太字 */
+            font-weight: bold;
         }
 
         /* 文末の改行崩れを防ぐための設定 */
@@ -79,16 +84,15 @@
         }
 
         .hashtag {
-            font-size: 26px; /* 少し大きく */
-            font-weight: 900; /* 極太 */
+            font-size: 26px;
+            font-weight: 900;
             color: #1d9bf0;
-            background-color: rgba(255, 255, 255, 0.9); /* 背景を白くして目立たせる */
+            background-color: rgba(255, 255, 255, 0.9);
             padding: 12px 25px;
             border-radius: 30px;
             display: inline-block;
             margin: 25px 0;
             box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-            /* ハッシュタグにも白い縁取り */
             text-shadow: 1px 1px 0 #fff;
         }
 
@@ -96,15 +100,15 @@
             display: inline-block;
             background-color: #000;
             color: #fff;
-            padding: 18px 50px; /* ボタンを大きく */
+            padding: 18px 50px;
             text-decoration: none;
             font-weight: bold;
             border-radius: 40px;
-            font-size: 20px; /* 文字サイズアップ */
+            font-size: 20px;
             margin-bottom: 40px;
             transition: background-color 0.3s, transform 0.1s;
             box-shadow: 0 5px 10px rgba(0,0,0,0.3);
-            border: 2px solid #fff; /* 白い枠線を追加して目立たせる */
+            border: 2px solid #fff;
         }
         .post-button:hover {
             background-color: #333;
@@ -114,11 +118,11 @@
         /* 投稿例エリアのデザイン */
         .example-box {
             margin-top: 30px;
-            border-top: 2px solid rgba(255,255,255, 0.8); /* 区切り線を白く太く */
+            border-top: 2px solid rgba(255,255,255, 0.8);
             padding-top: 20px;
         }
         .example-title {
-            font-weight: 800; /* 極太 */
+            font-weight: 800;
             color: #222;
             margin-bottom: 20px;
             display: block;
