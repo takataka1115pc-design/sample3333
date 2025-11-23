@@ -12,7 +12,7 @@
             font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
             background-color: #f0f0f0;
             color: #333;
-            line-height: 1.6;
+            line-height: 1.8; /* 行間を少し広げました */
         }
 
         /* 背景画像の設定 */
@@ -33,7 +33,7 @@
 
         /* メインコンテンツの枠組み */
         .container {
-            max-width: 800px;
+            max-width: 900px; /* 2列表示にするため少し幅を広げました */
             margin: 50px auto;
             background-color: rgba(255, 255, 255, 0.95);
             padding: 40px;
@@ -55,6 +55,11 @@
             font-size: 16px;
             margin-bottom: 20px;
             text-align: left;
+        }
+
+        /* 文末の改行崩れを防ぐための設定 */
+        .text-block {
+            display: inline-block; /* これで「ひとかたまり」として扱われます */
         }
 
         .hashtag {
@@ -100,11 +105,19 @@
             font-size: 18px;
         }
 
-        /* ツイートを中央に配置 */
-        .tweet-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        /* ツイートを2列で並べるグリッドレイアウト */
+        .tweet-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* 幅に合わせて自動調整 */
+            gap: 20px; /* ツイート同士の隙間 */
+            justify-content: center;
+        }
+        
+        /* スマホなどの狭い画面では1列にする */
+        @media (max-width: 768px) {
+            .tweet-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -116,10 +129,10 @@
         <h1>防災無線のさらなる普及のため、<br>Xでの投稿をお願いします</h1>
 
         <p>「防災無線チャイムの世界」をご覧いただきありがとうございます。<br>
-        当サイトでは、全国各地の防災無線の魅力をより多くの方に知っていただくため、皆様からの情報発信を募集しています。</p>
+        当サイトでは、全国各地の防災無線の魅力をより多くの方に知っていただくため、<span class="text-block">皆様からの情報発信を募集しています。</span></p>
         
-        <p>あなたの街の防災無線、旅先で見かけたスピーカーなど、素敵な風景をぜひX（旧Twitter）で共有してください。<br>
-      皆さんで旅したように防災無線のある風景から懐かしいあの頃を感じてみませんか？</p>
+        <p>あなたの街の防災無線、旅先で見かけたスピーカーなど、素敵な風景を<span class="text-block">ぜひX（旧Twitter）で共有してください。</span><br>
+        投稿が増えることが、防災無線文化のさらなる発展と普及に繋がります。</p>
 
         <p style="text-align: center;">投稿の際は、以下のハッシュタグをつけてください。</p>
 
@@ -134,11 +147,19 @@
         <div class="example-box">
             <span class="example-title">▼ 素敵な投稿のご紹介（ピックアップ）</span>
             
-            <div class="tweet-container">
-                <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">桜と防災無線<a href="https://twitter.com/hashtag/%E9%98%B2%E7%81%BD%E7%84%A1%E7%B7%9A?src=hash&amp;ref_src=twsrc%5Etfw">#防災無線</a> <a href="https://twitter.com/hashtag/%E9%98%B2%E7%81%BD%E7%84%A1%E7%B7%9A%E3%81%AE%E3%81%82%E3%82%8B%E9%A2%A8%E6%99%AF?src=hash&amp;ref_src=twsrc%5Etfw">#防災無線のある風景</a> <a href="https://t.co/B5N3B4B5Mh">pic.twitter.com/B5N3B4B5Mh</a></p>&mdash; むこがわ (@mkgw_0614) <a href="https://twitter.com/mkgw_0614/status/1511541470632681475?ref_src=twsrc%5Etfw">April 6, 2022</a></blockquote>
+            <div class="tweet-grid">
                 
-                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                <blockquote class="twitter-tweet"><a href="https://twitter.com/mkgw_0614/status/1511541470632681475"></a></blockquote>
+
+                <blockquote class="twitter-tweet"><a href="https://twitter.com/Fuka_2482/status/1824414759871189273"></a></blockquote>
+
+                <blockquote class="twitter-tweet"><a href="https://twitter.com/Nikina_112/status/1599368890722975745"></a></blockquote>
+
+                <blockquote class="twitter-tweet"><a href="https://twitter.com/Hojicha04/status/1891081404605186353"></a></blockquote>
+
             </div>
+            
+            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
             
             <p style="margin-top:20px; font-size:14px; color:#666;">
                 <a href="https://twitter.com/hashtag/防災無線のある風景?src=hash" target="_blank">もっと見る（Xで検索） &rarr;</a>
