@@ -4,8 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>防災無線のさらなる普及のために</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@800&display=swap" rel="stylesheet">
+
     <style>
-        /* ページ全体のスタイル */
+        /* ページ全体のスタイル（本文は読みやすいゴシック体のまま） */
         body {
             margin: 0;
             padding: 0;
@@ -13,7 +18,7 @@
             background-color: #f0f0f0;
             color: #111;
             line-height: 1.8;
-            font-weight: bold; /* 全体を太字に */
+            font-weight: bold;
         }
 
         /* 背景画像の設定 */
@@ -36,27 +41,21 @@
         .container {
             max-width: 900px;
             margin: 50px auto;
-            
-            /* ▼ここを変更しました
-               0.35 → 0.5 に変更。
-               これで「透過しすぎ」が解消され、ちょうどよい白さになります。
-            */
-            background-color: rgba(255, 255, 255, 0.5); 
-            
+            background-color: rgba(255, 255, 255, 0.5); /* 背景の白さ0.5 */
             padding: 40px;
             border-radius: 15px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             text-align: center;
-            
-            /* すりガラス効果 */
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             border: 2px solid rgba(255, 255, 255, 0.6);
         }
 
+        /* ▼【変更】タイトルを丸ゴシック体に変更 */
         h1 {
+            font-family: "M PLUS Rounded 1c", "Hiragino Maru Gothic ProN", "HGMaruGothicMPRO", sans-serif;
             font-size: 30px;
-            font-weight: 800;
+            font-weight: 800; /* 丸ゴシックの太字 */
             color: #b71c1c;
             margin-bottom: 30px;
             border-bottom: 3px solid #b71c1c;
@@ -68,12 +67,7 @@
         p {
             font-size: 17px;
             margin-bottom: 20px;
-            
-            /* ▼ここを変更しました
-               文章をすべて「中央揃え（center）」にしました。
-            */
-            text-align: center;
-            
+            text-align: center; /* 中央揃え */
             text-shadow: 1.5px 1.5px 0 #fff, -1.5px -1.5px 0 #fff, 1.5px -1.5px 0 #fff, -1.5px 1.5px 0 #fff;
             font-weight: bold;
         }
@@ -84,6 +78,7 @@
         }
 
         .hashtag {
+            font-family: "M PLUS Rounded 1c", sans-serif; /* ハッシュタグも丸っこくすると可愛いです */
             font-size: 26px;
             font-weight: 900;
             color: #1d9bf0;
@@ -97,12 +92,14 @@
         }
 
         .post-button {
+            /* ボタンの文字も丸ゴシックにしてみます（お好みで外せます） */
+            font-family: "M PLUS Rounded 1c", sans-serif; 
             display: inline-block;
             background-color: #000;
             color: #fff;
             padding: 18px 50px;
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 800;
             border-radius: 40px;
             font-size: 20px;
             margin-bottom: 40px;
@@ -121,7 +118,10 @@
             border-top: 2px solid rgba(255,255,255, 0.8);
             padding-top: 20px;
         }
+        
+        /* ▼【変更】セクション見出しを丸ゴシック体に変更 */
         .example-title {
+            font-family: "M PLUS Rounded 1c", "Hiragino Maru Gothic ProN", sans-serif;
             font-weight: 800;
             color: #222;
             margin-bottom: 20px;
@@ -172,7 +172,7 @@
             <span class="example-title">▼ 素敵な投稿のご紹介（ピックアップ）</span>
             
             <div class="tweet-grid">
-                <blockquote class="twitter-tweet"><a href="https:///twitter.com/himarin015/status/1992537869173592324"></a></blockquote>
+                <blockquote class="twitter-tweet"><a href="https://twitter.com/himarin015/status/1992537869173592324"></a></blockquote>
 
                 <blockquote class="twitter-tweet"><a href="https://twitter.com/Fuka_2482/status/1824414759871189273"></a></blockquote>
 
