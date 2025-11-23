@@ -11,8 +11,9 @@
             padding: 0;
             font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
             background-color: #f0f0f0;
-            color: #222; /* 文字を少し濃い黒にして読みやすく */
+            color: #111; /* 真っ黒に近い色にしてコントラスト強化 */
             line-height: 1.8;
+            font-weight: bold; /* 【変更点】全体を太字に設定 */
         }
 
         /* 背景画像の設定 */
@@ -36,10 +37,7 @@
             max-width: 900px;
             margin: 50px auto;
             
-            /* ▼ここを変更しました
-               0.35 にしてかなり透明にしています。
-               背景の紅葉がよく見えるようになります。
-            */
+            /* 背景の透明度（0.35） */
             background-color: rgba(255, 255, 255, 0.35); 
             
             padding: 40px;
@@ -47,31 +45,32 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             text-align: center;
             
-            /* すりガラス効果を強め（10px）にして、文字の読みやすさを確保 */
+            /* すりガラス効果 */
             backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px); /* Safari用 */
-            border: 1px solid rgba(255, 255, 255, 0.3); /* 薄い枠線をつけて境界をはっきりさせる */
+            -webkit-backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.5); /* 枠線も少し太く */
         }
 
         h1 {
-            font-size: 28px;
-            color: #c62828; /* 少し濃い赤 */
+            font-size: 30px; /* タイトルを少し大きく */
+            font-weight: 800; /* さらに極太に */
+            color: #b71c1c; /* 濃い赤 */
             margin-bottom: 30px;
-            border-bottom: 2px solid #c62828;
+            border-bottom: 3px solid #b71c1c; /* 下線も太く */
             padding-bottom: 10px;
             display: inline-block;
             
-            /* 文字の周りに白い光彩をつけて読みやすく */
-            text-shadow: 0 0 10px rgba(255,255,255,0.8), 0 0 2px rgba(255,255,255,1.0);
+            /* タイトルの光彩 */
+            text-shadow: 2px 2px 0 #fff, -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff;
         }
 
         p {
-            font-size: 16px;
+            font-size: 17px; /* 本文も少し大きく */
             margin-bottom: 20px;
             text-align: left;
-            /* 文字の周りに白い縁取りをつけて、どんな背景でも読めるように */
-            text-shadow: 1px 1px 0 #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
-            font-weight: 600; /* 文字を太く */
+            /* 白い縁取りを少し太くして可読性アップ */
+            text-shadow: 1.5px 1.5px 0 #fff, -1.5px -1.5px 0 #fff, 1.5px -1.5px 0 #fff, -1.5px 1.5px 0 #fff;
+            font-weight: bold; /* 太字 */
         }
 
         /* 文末の改行崩れを防ぐための設定 */
@@ -80,29 +79,32 @@
         }
 
         .hashtag {
-            font-size: 24px;
-            font-weight: bold;
+            font-size: 26px; /* 少し大きく */
+            font-weight: 900; /* 極太 */
             color: #1d9bf0;
-            background-color: rgba(232, 245, 254, 0.9); /* ハッシュタグの背景も少し透けさせる */
-            padding: 10px 20px;
+            background-color: rgba(255, 255, 255, 0.9); /* 背景を白くして目立たせる */
+            padding: 12px 25px;
             border-radius: 30px;
             display: inline-block;
-            margin: 20px 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin: 25px 0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            /* ハッシュタグにも白い縁取り */
+            text-shadow: 1px 1px 0 #fff;
         }
 
         .post-button {
             display: inline-block;
             background-color: #000;
             color: #fff;
-            padding: 15px 40px;
+            padding: 18px 50px; /* ボタンを大きく */
             text-decoration: none;
             font-weight: bold;
-            border-radius: 30px;
-            font-size: 18px;
+            border-radius: 40px;
+            font-size: 20px; /* 文字サイズアップ */
             margin-bottom: 40px;
             transition: background-color 0.3s, transform 0.1s;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+            border: 2px solid #fff; /* 白い枠線を追加して目立たせる */
         }
         .post-button:hover {
             background-color: #333;
@@ -112,16 +114,16 @@
         /* 投稿例エリアのデザイン */
         .example-box {
             margin-top: 30px;
-            border-top: 1px solid rgba(0,0,0,0.2); /* 線も少しなじませる */
+            border-top: 2px solid rgba(255,255,255, 0.8); /* 区切り線を白く太く */
             padding-top: 20px;
         }
         .example-title {
-            font-weight: bold;
+            font-weight: 800; /* 極太 */
             color: #222;
             margin-bottom: 20px;
             display: block;
-            font-size: 18px;
-            text-shadow: 1px 1px 0 rgba(255,255,255,0.8);
+            font-size: 20px;
+            text-shadow: 2px 2px 0 #fff, -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff;
         }
 
         /* ツイートグリッド */
@@ -152,7 +154,7 @@
         <p>あなたの街の防災無線、旅先で見かけたスピーカーなど、素敵な風景を<span class="text-block">ぜひX（旧Twitter）で共有してください。</span><br>
         投稿が増えることが、防災無線文化のさらなる発展と普及に繋がります。</p>
 
-        <p style="text-align: center; text-shadow: 1px 1px 0 #fff;">投稿の際は、以下のハッシュタグをつけてください。</p>
+        <p style="text-align: center; text-shadow: 2px 2px 0 #fff, -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff;">投稿の際は、以下のハッシュタグをつけてください。</p>
 
         <div class="hashtag">#防災無線のある風景</div>
 
@@ -177,7 +179,7 @@
             
             <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
             
-            <p style="margin-top:20px; font-size:14px; color:#222; text-shadow: 1px 1px 0 #fff;">
+            <p style="margin-top:20px; font-size:16px; font-weight:bold; color:#222; text-shadow: 2px 2px 0 #fff, -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff;">
                 <a href="https://twitter.com/hashtag/防災無線のある風景?src=hash" target="_blank" style="color:#000;">もっと見る（Xで検索） &rarr;</a>
             </p>
         </div>
