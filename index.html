@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+
+
+        <!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
@@ -7,140 +9,218 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;800&display=swap" rel="stylesheet">
 
     <style>
-        /* ページ全体のスタイル（本文は読みやすいゴシック体のまま） */
+        /* --- ベース設定 --- */
+        :root {
+            --primary-color: #b71c1c; /* テーマカラー（赤） */
+            --accent-color: #1d9bf0;  /* ハッシュタグの青 */
+            --glass-bg: rgba(255, 255, 255, 0.75);
+            --glass-border: rgba(255, 255, 255, 0.4);
+            --text-main: #333;
+        }
+
         body {
             margin: 0;
             padding: 0;
-            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
-            background-color: #f0f0f0;
-            color: #111;
+            font-family: "M PLUS Rounded 1c", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+            color: var(--text-main);
             line-height: 1.8;
-            font-weight: bold;
+            background-color: #f4f4f4;
+            /* スクロールバーの調整 */
+            overflow-x: hidden;
         }
 
-        /* 背景画像の設定 */
+        /* --- 背景設定（パララックス効果） --- */
         .background-layer {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            /* 背景画像：紅葉 */
-            background-image:
-                linear-gradient(to bottom, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.2)),
-                url('background.png');
+            /* 画像がない場合のフォールバック（グラデーション） */
+            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+            /* 背景画像設定：ここを実際の画像URLに変えてください */
+            background-image: url('background.png'); 
             background-size: cover;
             background-position: center;
             z-index: -1;
+            filter: blur(3px); /* 背景を少しぼかして文字を見やすく */
+            transform: scale(1.1); /* ぼかしの端を切るため少し拡大 */
         }
 
-        /* メインコンテンツの枠組み */
+        /* --- メインコンテナ（グラスモーフィズム） --- */
         .container {
-            max-width: 900px;
-            margin: 50px auto;
-            background-color: rgba(255, 255, 255, 0.5); /* 背景の白さ0.5 */
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            max-width: 800px;
+            margin: 60px auto;
+            padding: 50px 30px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 24px;
+            border: 1px solid var(--glass-border);
+            box-shadow: 
+                0 20px 40px rgba(0,0,0,0.1),
+                inset 0 0 0 1px rgba(255,255,255, 0.5);
             text-align: center;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 2px solid rgba(255, 255, 255, 0.6);
+            animation: fadeInUp 1s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
         }
 
-        /* ▼【変更】タイトルを丸ゴシック体に変更 */
+        /* --- アニメーション定義 --- */
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* --- タイトル --- */
         h1 {
-            font-family: "M PLUS Rounded 1c", "Hiragino Maru Gothic ProN", "HGMaruGothicMPRO", sans-serif;
-            font-size: 30px;
-            font-weight: 800; /* 丸ゴシックの太字 */
-            color: #b71c1c;
-            margin-bottom: 30px;
-            border-bottom: 3px solid #b71c1c;
-            padding-bottom: 10px;
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            letter-spacing: 0.05em;
+            text-shadow: 2px 2px 0 #fff;
+            position: relative;
             display: inline-block;
-            text-shadow: 2px 2px 0 #fff, -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff;
+        }
+        
+        h1::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--primary-color);
+            margin: 10px auto 0;
+            border-radius: 2px;
         }
 
         p {
-            font-size: 17px;
-            margin-bottom: 20px;
-            text-align: center; /* 中央揃え */
-            text-shadow: 1.5px 1.5px 0 #fff, -1.5px -1.5px 0 #fff, 1.5px -1.5px 0 #fff, -1.5px 1.5px 0 #fff;
-            font-weight: bold;
-        }
-
-        /* 文末の改行崩れを防ぐための設定 */
-        .text-block {
-            display: inline-block;
-        }
-
-        .hashtag {
-            font-family: "M PLUS Rounded 1c", sans-serif; /* ハッシュタグも丸っこくすると可愛いです */
-            font-size: 26px;
-            font-weight: 900;
-            color: #1d9bf0;
-            background-color: rgba(255, 255, 255, 0.9);
-            padding: 12px 25px;
-            border-radius: 30px;
-            display: inline-block;
-            margin: 25px 0;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            font-size: 1.05rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
             text-shadow: 1px 1px 0 #fff;
         }
 
-        .post-button {
-            /* ボタンの文字も丸ゴシックにしてみます（お好みで外せます） */
-            font-family: "M PLUS Rounded 1c", sans-serif; 
+        .text-highlight {
+            background: linear-gradient(transparent 60%, rgba(183, 28, 28, 0.1) 60%);
+            padding: 0 5px;
+        }
+
+        /* --- ハッシュタグ --- */
+        .hashtag-container {
+            margin: 30px 0;
+        }
+
+        .hashtag {
+            font-size: clamp(1.2rem, 4vw, 1.8rem); /* レスポンシブなフォントサイズ */
+            color: var(--accent-color);
+            background: #fff;
+            padding: 15px 30px;
+            border-radius: 50px;
+            box-shadow: 0 10px 25px rgba(29, 155, 240, 0.2);
             display: inline-block;
+            border: 2px solid #e1e8ed;
+            transition: transform 0.3s ease;
+        }
+
+        .hashtag:hover {
+            transform: scale(1.05) rotate(-1deg);
+        }
+
+        /* --- 投稿ボタン（Xスタイル） --- */
+        .post-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
             background-color: #000;
             color: #fff;
-            padding: 18px 50px;
-            text-decoration: none;
+            padding: 16px 40px;
+            border-radius: 50px;
+            font-size: 1.1rem;
             font-weight: 800;
-            border-radius: 40px;
-            font-size: 20px;
-            margin-bottom: 40px;
-            transition: background-color 0.3s, transform 0.1s;
-            box-shadow: 0 5px 10px rgba(0,0,0,0.3);
-            border: 2px solid #fff;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            margin-bottom: 50px;
+            border: 2px solid transparent;
         }
+
+        .post-button svg {
+            width: 20px;
+            height: 20px;
+            fill: #fff;
+        }
+
         .post-button:hover {
             background-color: #333;
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.4);
+            border-color: rgba(255,255,255,0.2);
         }
 
-        /* 投稿例エリアのデザイン */
+        /* --- 投稿例エリア --- */
         .example-box {
-            margin-top: 30px;
-            border-top: 2px solid rgba(255,255,255, 0.8);
-            padding-top: 20px;
-        }
-        
-        /* ▼【変更】セクション見出しを丸ゴシック体に変更 */
-        .example-title {
-            font-family: "M PLUS Rounded 1c", "Hiragino Maru Gothic ProN", sans-serif;
-            font-weight: 800;
-            color: #222;
-            margin-bottom: 20px;
-            display: block;
-            font-size: 20px;
-            text-shadow: 2px 2px 0 #fff, -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff;
+            border-top: 2px dashed rgba(0,0,0,0.1);
+            padding-top: 40px;
+            margin-top: 20px;
         }
 
-        /* ツイートグリッド */
+        .example-title {
+            display: inline-block;
+            background: #fff;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        /* --- グリッドレイアウト --- */
         .tweet-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px;
-            justify-content: center;
+            width: 100%;
         }
         
-        @media (max-width: 768px) {
-            .tweet-grid {
-                grid-template-columns: 1fr;
+        /* ツイートの中央寄せ補正 */
+        .tweet-grid blockquote {
+            margin: 0 auto;
+        }
+
+        /* --- もっと見るリンク --- */
+        .more-link {
+            display: inline-block;
+            margin-top: 30px;
+            font-size: 1rem;
+            color: #333;
+            text-decoration: none;
+            border-bottom: 2px solid #333;
+            padding-bottom: 2px;
+            transition: opacity 0.3s;
+        }
+        .more-link:hover {
+            opacity: 0.7;
+        }
+
+        /* --- モバイル調整 --- */
+        @media (max-width: 600px) {
+            .container {
+                margin: 20px;
+                padding: 30px 20px;
+            }
+            h1 {
+                font-size: 1.5rem;
+            }
+            .post-button {
+                width: 80%;
+                padding: 14px 0;
             }
         }
     </style>
@@ -150,44 +230,50 @@
     <div class="background-layer"></div>
 
     <div class="container">
-        <h1>防災無線のさらなる普及のため<br>Xでの投稿をお願いします</h1>
-
-        <p>「防災無線チャイムの世界」をご覧いただきありがとうございます。<br>
-        当サイトでは、全国各地の防災無線の魅力をより多くの方に知っていただくため、<span class="text-block">皆様からの情報発信を募集しています。</span></p>
         
-        <p>あなたの街の防災無線、旅先で見かけたスピーカーなど、素敵な風景を<span class="text-block">ぜひX（旧Twitter）で共有してください。</span><br>
-        投稿が増えることが、防災無線文化のさらなる発展と普及に繋がります。</p>
+        <h1>防災無線チャイムの世界</h1>
 
-        <p style="text-align: center; text-shadow: 2px 2px 0 #fff, -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff;">投稿の際は、以下のハッシュタグをつけてください。</p>
+        <p>
+            当サイトでは、全国各地の防災無線の魅力を<br>
+            より多くの方に知っていただくため、<br>
+            <span class="text-highlight">皆様からの情報発信を募集しています。</span>
+        </p>
+        
+        <p>
+            あなたの街の防災無線、旅先で見かけたスピーカー。<br>
+            その素敵な風景を、ぜひ共有してください。<br>
+            投稿が、この文化のさらなる発展に繋がります。
+        </p>
 
-        <div class="hashtag">#防災無線のある風景</div>
-
-        <br>
+        <div class="hashtag-container">
+            <p style="font-size:0.9rem; color:#666; margin-bottom:10px;">▼ このタグをつけて投稿 ▼</p>
+            <div class="hashtag">#防災無線のある風景</div>
+        </div>
 
         <a href="https://twitter.com/intent/tweet?text=%23%E9%98%B2%E7%81%BD%E7%84%A1%E7%B7%9A%E3%81%AE%E3%81%82%E3%82%8B%E9%A2%A8%E6%99%AF%20" target="_blank" class="post-button">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><g><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></g></svg>
             今すぐ投稿する
         </a>
 
         <div class="example-box">
-            <span class="example-title">▼ 素敵な投稿のご紹介（ピックアップ）</span>
+            <span class="example-title">素敵な投稿をピックアップ</span>
             
             <div class="tweet-grid">
                 <blockquote class="twitter-tweet"><a href="https://twitter.com/himarin015/status/1992537869173592324"></a></blockquote>
-
                 <blockquote class="twitter-tweet"><a href="https://twitter.com/jizo_chime/status/1542865009491218432"></a></blockquote>
-
                 <blockquote class="twitter-tweet"><a href="https://twitter.com/Niigata_Chime/status/1972617356607103024"></a></blockquote>
-
                 <blockquote class="twitter-tweet"><a href="https://twitter.com/channel_bousai/status/1262162696834650112"></a></blockquote>
             </div>
             
-            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-            
-            <p style="margin-top:20px; font-size:16px; font-weight:bold; color:#222; text-shadow: 2px 2px 0 #fff, -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff;">
-                <a href="https://twitter.com/hashtag/防災無線のある風景?src=hash" target="_blank" style="color:#000;">もっと見る（Xで検索） &rarr;</a>
-            </p>
+            <a href="https://twitter.com/hashtag/防災無線のある風景?src=hash" target="_blank" class="more-link">
+                Xで「#防災無線のある風景」をもっと見る &rarr;
+            </a>
         </div>
     </div>
 
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
 </body>
 </html>
+
+        /*
