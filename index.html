@@ -12,7 +12,7 @@
             font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
             background-color: #f0f0f0;
             color: #333;
-            line-height: 1.8; /* 行間を少し広げました */
+            line-height: 1.8;
         }
 
         /* 背景画像の設定 */
@@ -33,33 +33,48 @@
 
         /* メインコンテンツの枠組み */
         .container {
-            max-width: 900px; /* 2列表示にするため少し幅を広げました */
+            max-width: 900px;
             margin: 50px auto;
-            background-color: rgba(255, 255, 255, 0.95);
+            
+            /* ▼ここを変更しました
+               最後の数字 '0.6' が透明度です（1.0が不透明、0.0が透明）。
+               もっと薄くしたい場合は 0.4 に、濃くしたい場合は 0.8 にしてください。
+            */
+            background-color: rgba(255, 255, 255, 0.6); 
+            
             padding: 40px;
             border-radius: 15px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             text-align: center;
+            
+            /* 背景が透けると文字が読みづらくなることがあるので、少しぼかしを入れるとおしゃれで読みやすくなります */
+            backdrop-filter: blur(5px);
         }
 
         h1 {
             font-size: 28px;
-            color: #d32f2f;
+            color: #d32f2f; /* 赤色 */
             margin-bottom: 30px;
             border-bottom: 2px solid #d32f2f;
             padding-bottom: 10px;
             display: inline-block;
+            
+            /* 文字が背景に埋もれないように少し影をつけます */
+            text-shadow: 1px 1px 0px rgba(255,255,255,0.8);
         }
 
         p {
             font-size: 16px;
             margin-bottom: 20px;
             text-align: left;
+            /* 文字の影 */
+            text-shadow: 1px 1px 0px rgba(255,255,255,0.5);
+            font-weight: 500; /* 文字を少し太くして読みやすく */
         }
 
         /* 文末の改行崩れを防ぐための設定 */
         .text-block {
-            display: inline-block; /* これで「ひとかたまり」として扱われます */
+            display: inline-block;
         }
 
         .hashtag {
@@ -71,6 +86,7 @@
             border-radius: 30px;
             display: inline-block;
             margin: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
         .post-button {
@@ -94,26 +110,26 @@
         /* 投稿例エリアのデザイン */
         .example-box {
             margin-top: 30px;
-            border-top: 1px solid #ddd;
+            border-top: 1px solid #999; /* 線を少し濃くしました */
             padding-top: 20px;
         }
         .example-title {
             font-weight: bold;
-            color: #555;
+            color: #333; /* 文字色を少し濃くしました */
             margin-bottom: 20px;
             display: block;
             font-size: 18px;
+            text-shadow: 1px 1px 0px rgba(255,255,255,0.5);
         }
 
         /* ツイートを2列で並べるグリッドレイアウト */
         .tweet-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* 幅に合わせて自動調整 */
-            gap: 20px; /* ツイート同士の隙間 */
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
             justify-content: center;
         }
         
-        /* スマホなどの狭い画面では1列にする */
         @media (max-width: 768px) {
             .tweet-grid {
                 grid-template-columns: 1fr;
@@ -148,7 +164,6 @@
             <span class="example-title">▼ 素敵な投稿のご紹介（ピックアップ）</span>
             
             <div class="tweet-grid">
-                
                 <blockquote class="twitter-tweet"><a href="https://twitter.com/mkgw_0614/status/1511541470632681475"></a></blockquote>
 
                 <blockquote class="twitter-tweet"><a href="https://twitter.com/Fuka_2482/status/1824414759871189273"></a></blockquote>
@@ -156,13 +171,12 @@
                 <blockquote class="twitter-tweet"><a href="https://twitter.com/Nikina_112/status/1599368890722975745"></a></blockquote>
 
                 <blockquote class="twitter-tweet"><a href="https://twitter.com/Hojicha04/status/1891081404605186353"></a></blockquote>
-
             </div>
             
             <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
             
-            <p style="margin-top:20px; font-size:14px; color:#666;">
-                <a href="https://twitter.com/hashtag/防災無線のある風景?src=hash" target="_blank">もっと見る（Xで検索） &rarr;</a>
+            <p style="margin-top:20px; font-size:14px; color:#333;">
+                <a href="https://twitter.com/hashtag/防災無線のある風景?src=hash" target="_blank" style="color:#000;">もっと見る（Xで検索） &rarr;</a>
             </p>
         </div>
     </div>
